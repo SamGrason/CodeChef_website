@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -7,18 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose
-    .connect(
-        "mongodb://sam:sam123@ac-yl1hxxc-shard-00-00.nhxgnsg.mongodb.net:27017,ac-yl1hxxc-shard-00-01.nhxgnsg.mongodb.net:27017,ac-yl1hxxc-shard-00-02.nhxgnsg.mongodb.net:27017/?ssl=true&replicaSet=atlas-arwq58-shard-0&authSource=admin&appName=Cluster0"
-    )
+
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        console.log("Database connected successfully");
+        console.log("MongoDB Connected Successfully")
     })
     .catch((err) => {
-        console.log("Database not connected");
-        console.log(err);
-    });
-
+        console.log(err)
+    })
 const db = mongoose.connection.useDb("CodeChef");
 
 const recruitmentSchema = new mongoose.Schema({
