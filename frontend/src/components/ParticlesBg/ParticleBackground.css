@@ -1,0 +1,48 @@
+.particles-container {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    filter: url("#goo");
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+
+    background: linear-gradient(120deg,
+            rgba(224, 195, 252, 0.8),
+            rgba(142, 197, 252, 0.8));
+
+    animation: float infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(180px);
+    }
+}
+
+@keyframes floatReverse {
+    50% {
+        transform: translateY(-180px);
+    }
+}
+
+@keyframes float2 {
+    50% {
+        transform: translateY(280px);
+    }
+}
+
+@keyframes floatReverse2 {
+    50% {
+        transform: translateY(-280px);
+    }
+}
